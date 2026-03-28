@@ -56,8 +56,8 @@ function calculate() {
     const calorieTarget = goalWeight < weight ? TDEE - 400 : TDEE + 300;
 
     // Macro split
-    const protein = goalWeight * 2; // grams
-    const fat = weight * 0.8;       // grams
+    const protein = goalWeight * 2.2; // grams
+    const fat = weight * 0.5;       // grams
     const caloriesFromProtein = protein * 4;
     const caloriesFromFat = fat * 9;
     const remainingCalories = calorieTarget - (caloriesFromProtein + caloriesFromFat);
