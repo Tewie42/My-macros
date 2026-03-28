@@ -3,17 +3,17 @@ body {
     font-family: system-ui, sans-serif;
     margin: 0;
     padding: 20px;
-    background: #fafafa;
-    color: #222;
+    background: #0d0d0f;
+    color: #f5f5f7;
     line-height: 1.5;
 }
 
 /* Container */
 .calculator {
-    background: #fff;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    background: #1a1a1f;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.08);
     max-width: 480px;
     margin: 0 auto;
 }
@@ -21,66 +21,102 @@ body {
 /* Headings */
 h2 {
     margin-top: 0;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 600;
     text-align: center;
+    color: #c4b5fd;
 }
 
-/* Labels + Inputs */
+/* Labels */
 label {
     display: block;
     margin-top: 18px;
     font-weight: 600;
     font-size: 0.95rem;
+    color: #e5e5ff;
 }
 
+/* Inputs */
 input, select {
     width: 100%;
     padding: 12px;
     margin-top: 6px;
-    border: 1px solid #ddd;
+    border: 1px solid #3a3a40;
     border-radius: 10px;
     font-size: 1rem;
-    background: #fff;
-    transition: border-color 0.2s;
+    background: #111114;
+    color: #f5f5f7;
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
 }
 
 input:focus, select:focus {
-    border-color: #4a8df6;
+    border-color: #8b5cf6;
+    background: #16161a;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
     outline: none;
 }
 
 /* Button */
 button {
-    margin-top: 24px;
+    margin-top: 26px;
     width: 100%;
     padding: 14px;
-    background: #4a8df6;
+    background: #8b5cf6;
     color: #fff;
     border: none;
     border-radius: 10px;
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.25s, transform 0.1s, box-shadow 0.25s;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
 }
 
 button:hover {
-    background: #3a7be0;
+    background: #7c3aed;
+    box-shadow: 0 0 18px rgba(139, 92, 246, 0.7);
+}
+
+button:active {
+    transform: scale(0.97);
 }
 
 /* Results card */
 .result {
-    margin-top: 28px;
+    margin-top: 30px;
     padding: 20px;
-    background: #f1f5ff;
+    background: #141418;
     border-radius: 12px;
-    border-left: 4px solid #4a8df6;
+    border-left: 4px solid #8b5cf6;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.25);
 }
 
 .result h3 {
     margin-top: 0;
     font-size: 1.3rem;
+    color: #c4b5fd;
+}
+
+/* Activity Table */
+.activity-table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.activity-table th, .activity-table td {
+    padding: 10px;
+    border-bottom: 1px solid #2a2a30;
+}
+
+.activity-table th {
+    text-align: left;
+    color: #c4b5fd;
+}
+
+.activity-table tr:hover {
+    background: rgba(139, 92, 246, 0.08);
 }
 
 /* Desktop enhancements */
