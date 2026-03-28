@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Macro Calculator</title>
+<style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; }
+    label { display: block; margin-top: 12px; font-weight: bold; }
+    input, select { width: 100%; padding: 8px; margin-top: 4px; }
+    button { margin-top: 20px; padding: 12px; width: 100%; font-size: 16px; }
+    .result { margin-top: 30px; padding: 20px; background: #f4f4f4; border-radius: 8px; }
+</style>
+</head>
+<body>
+
+<h2>Macro Calculator</h2>
+
+<label>Sex</label>
+<select id="sex">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+</select>
+
+<label>Height (cm)</label>
+<input type="number" id="height">
+
+<label>Weight (kg)</label>
+<input type="number" id="weight">
+
+<label>Goal Weight (kg)</label>
+<input type="number" id="goalWeight">
+
+<label>Activity Level</label>
+<select id="activity">
+    <option value="1.2">Sedentary</option>
+    <option value="1.375">Lightly Active</option>
+    <option value="1.55">Moderately Active</option>
+    <option value="1.725">Very Active</option>
+    <option value="1.9">Extremely Active</option>
+</select>
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="output" class="result" style="display:none;"></div>
+
+<script>
+function calculate() {
+    const sex = document.getElementById("sex").value;
+    const height = parseFloat(document.getElementById("height").value);
+    const weight = parseFloat(document.getElementById("weight").value);
+    const goalWeight = parseFloat(document.getElementById("goalWeight").value);
+    const activity = parseFloat(document.getElementById("activity").value);
+
+    // Mifflin-St Jeor BMR
+    let BMR = (10 * weight) + (6.25 * height) - (5 * 30); // age fixed at 30 for now
+    if (sex === "male") BMR += 5;
+    else BMR -= 161;
+
+    const TDEE = BMR * activity;
+
+    // Calorie target: small deficit/surplus based on goal
+    const calorieTarget = goalWeight < weight ? TDEE - 400 : TDEE + 300;
+
+    // Macro split
+    const protein = goalWeight * 2; // grams
+    const fat = weight * 0.8;       // grams
+    const caloriesFromProtein = protein * 4;
+    const caloriesFromFat = fat * 9;
+    const remainingCalories = calorieTarget - (caloriesFromProtein + caloriesFromFat);
+    const carbs = remainingCalories / 4;
+
+    document.getElementById("output").style.display = "block";
+    document.getElementById("output").innerHTML = `
+        <h3>Your Results</h3>
+        <strong>Calorie Target:</strong> ${Math.round(calorieTarget)} kcal<br><br>
+        <strong>Protein:</strong> ${Math.round(protein)} g<br>
+        <strong>Carbs:</strong> ${Math.round(carbs)} g<br>
+        <strong>Fat:</strong> ${Math.round(fat)} g
+    `;
+}
+</script>
+
+</body>
+</html>
