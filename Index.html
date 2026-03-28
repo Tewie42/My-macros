@@ -3,7 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <title>Macro Calculator</title>
-<link rel="stylesheet" href="css/power style.css">
+
+  <Style>body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #fafafa;
+    color: #222;
+    line-height: 1.5;
+}
+
+/* Container */
+.calculator {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* Headings */
+h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Labels + Inputs */
+label {
+    display: block;
+    margin-top: 18px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: #fff;
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #4a8df6;
+    outline: none;
+}
+
+/* Button */
+button {
+    margin-top: 24px;
+    width: 100%;
+    padding: 14px;
+    background: #4a8df6;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #3a7be0;
+}
+
+/* Results card */
+.result {
+    margin-top: 28px;
+    padding: 20px;
+    background: #f1f5ff;
+    border-radius: 12px;
+    border-left: 4px solid #4a8df6;
+}
+
+.result h3 {
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+      /* Desktop enhancements */
+@media (min-width: 600px) {
+    body {
+        padding: 40px;
+    }
+    .calculator {
+        padding: 30px;
+    }
+}
+
+</Style>  
+    /* Base layout */
+
+
 </head>
 <body>
 
