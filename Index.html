@@ -139,11 +139,12 @@ function calculate() {
     const sex = document.getElementById("sex").value;
     const height = parseFloat(document.getElementById("height").value);
     const weight = parseFloat(document.getElementById("weight").value);
+    const age = parseFloat(document.getElementById("age").value);
     const goalWeight = parseFloat(document.getElementById("goalWeight").value);
     const activity = parseFloat(document.getElementById("activity").value);
 
     // Mifflin-St Jeor BMR
-    let BMR = (11 * weight) + (6.25 * height) - (5 * age); //
+    let BMR = (11 * weight) + (6.25 * height) - (5 * age);
     if (sex === "male") BMR += 5;
     else BMR -= 161;
 
