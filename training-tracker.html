@@ -1,0 +1,25 @@
+<div class="app-container">
+
+    <h1 class="title">Training Tracker</h1>
+
+    <div class="card">
+        <label>Training Split</label>
+        <select id="split">
+            <option value="ppl">Push / Pull / Legs</option>
+            <option value="upperlower">Upper / Lower</option>
+            <option value="frontback">Front / Back</option>
+        </select>
+
+        <label>Sex</label>
+        <select id="sex">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+        </select>
+
+        <button onclick="startWorkout()">Start Workout</button>
+    </div>
+
+    <div id="workoutScreen" class="hidden"></div>
+    <div id="domsScreen" class="hidden"></div>
+
+</div>
