@@ -71,6 +71,29 @@ function showDOMS() {
         <button onclick="submitDOMS()">Submit</button>
     `;
 }
+function saveStrength() {
+    const bench = parseFloat(document.getElementById("bench3rm").value);
+    const squat = parseFloat(document.getElementById("squat3rm").value);
+    const dead = parseFloat(document.getElementById("dead3rm").value);
+
+    // Epley Formula: 1RM = weight * (1 + reps/30)
+    const bench1RM = bench * (1 + 3/30);
+    const squat1RM = squat * (1 + 3/30);
+    const dead1RM = dead * (1 + 3/30);
+
+    const profile = {
+        bench3RM: bench,
+        squat3RM: squat,
+        dead3RM: dead,
+        bench1RM: bench1RM,
+        squat1RM: squat1RM,
+        dead1RM: dead1RM
+    };
+
+    localStorage.setItem("strengthProfile", JSON.stringify(profile));
+
+    alert("Strength profile saved");
+}
 
 function submitDOMS() {
     alert("DOMS rating saved");
