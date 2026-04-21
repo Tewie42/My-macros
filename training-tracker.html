@@ -28,6 +28,21 @@
 
     <button onclick="startWorkout()">Start Workout</button>
 </div>
+<!-- Strength Questionnaire -->
+<div class="card" id="strengthCard">
+    <h2>Strength Questionnaire</h2>
+
+    <label>Bench Press 3RM (kg)</label>
+    <input type="number" id="bench3rm">
+
+    <label>Squat 3RM (kg)</label>
+    <input type="number" id="squat3rm">
+
+    <label>Deadlift 3RM (kg)</label>
+    <input type="number" id="dead3rm">
+
+    <button onclick="saveStrength()">Save Strength Profile</button>
+</div>
 
 <!-- Workout Screen (JS will populate this) -->
 <div id="workoutScreen" class="card hidden"></div>
