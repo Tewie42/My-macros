@@ -98,6 +98,97 @@ function saveStrength() {
 function submitDOMS() {
     alert("DOMS rating saved");
 }
+   <script type="module">
+import { generatePPLWorkout } from "./js/workouts/ppl.js";
+
+let currentWorkout = null;
+
+function startWorkout() {
+    const sex = document.getElementById("sex").value;
+    const strengthProfile = JSON.parse(localStorage.getItem("strengthProfile"));
+
+    if (!strengthProfile) {
+        alert("Please complete the strength questionnaire first.");
+        return;
+    }
+
+    // Generate PPL workout
+    currentWorkout = generatePPLWorkout(sex, strengthProfile);
+
+    renderWorkoutScreen();
+}
+
+window.startWorkout = startWorkout;
+    function renderWorkoutScreen() {
+    const screen = document.getElementById("workoutScreen");
+    screen.classList.remove("hidden");
+
+    screen.innerHTML = `
+        <h2>Today's Workout</h2>
+
+        <div class="card">
+            <button onclick="showSection('push')">Push</button>
+            <button onclick="showSection('pull')">Pull</button>
+            <button onclick="showSection('legs')">Legs</button>
+        </div>
+
+        <div id="pushSection" class="hidden"></div>
+        <div id="pullSection" class="hidden"></div>
+        <div id="legsSection" class="hidden"></div>
+    `;
+
+    renderSection("push", currentWorkout.push);
+    renderSection("pull", currentWorkout.pull);
+    renderSection("legs", currentWorkout.legs);
+}
+
+window.renderWorkoutScreen = renderWorkoutScreen;
+ function renderSection(name, exercises) {
+    const container = document.getElementById(name + "Section");
+
+    let html = "";
+
+    exercises.forEach((ex, index) => {
+        html += `
+            <div class="card mt-20">
+                <h3>${ex.name}</h3>
+
+                <p><strong>Recommended Load:</strong> ${ex.load}</p>
+                <p><strong>Reps:</strong> ${ex.reps}</p>
+                <p><strong>Sets:</strong> ${ex.sets}</p>
+
+                <label>Weight Used (kg)</label>
+                <input type="number" id="${name}_weight_${index}">
+
+                <label>Reps Completed</label>
+                <input type="number" id="${name}_reps_${index}">
+
+                <label>Difficulty</label>
+                <select id="${name}_difficulty_${index}">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="impossible">Impossible</option>
+                </select>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+window.renderSection = renderSection;
+function showSection(section) {
+    document.getElementById("pushSection").classList.add("hidden");
+    document.getElementById("pullSection").classList.add("hidden");
+    document.getElementById("legsSection").classList.add("hidden");
+
+    document.getElementById(section + "Section").classList.remove("hidden");
+}
+
+window.showSection = showSection;
+   
+
 </script>
 
 </body>
