@@ -1,25 +1,66 @@
-<div class="app-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Training Tracker</title>
+<link rel="stylesheet" href="css/power-style.css">
+</head>
 
-    <h1 class="title">Training Tracker</h1>
+<body>
 
-    <div class="card">
-        <label>Training Split</label>
-        <select id="split">
-            <option value="ppl">Push / Pull / Legs</option>
-            <option value="upperlower">Upper / Lower</option>
-            <option value="frontback">Front / Back</option>
-        </select>
+<h1 class="page-title">Training Tracker</h1>
 
-        <label>Sex</label>
-        <select id="sex">
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-        </select>
+<!-- Setup Card -->
+<div class="card">
+    <label for="split">Training Split</label>
+    <select id="split">
+        <option value="ppl">Push / Pull / Legs</option>
+        <option value="upperlower">Upper / Lower</option>
+        <option value="frontback">Front / Back</option>
+        <option value="fullbody">Full Body</option>
+    </select>
 
-        <button onclick="startWorkout()">Start Workout</button>
-    </div>
+    <label for="sex">Sex</label>
+    <select id="sex">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+    </select>
 
-    <div id="workoutScreen" class="hidden"></div>
-    <div id="domsScreen" class="hidden"></div>
-
+    <button onclick="startWorkout()">Start Workout</button>
 </div>
+
+<!-- Workout Screen (JS will populate this) -->
+<div id="workoutScreen" class="card hidden"></div>
+
+<!-- DOMS Screen (JS will populate this) -->
+<div id="domsScreen" class="card hidden"></div>
+
+<script>
+// Placeholder functions — we will build these next
+function startWorkout() {
+    const screen = document.getElementById("workoutScreen");
+    screen.classList.remove("hidden");
+    screen.innerHTML = `
+        <h2>Today's Workout</h2>
+        <p>Workout generator coming next...</p>
+    `;
+}
+
+function showDOMS() {
+    const doms = document.getElementById("domsScreen");
+    doms.classList.remove("hidden");
+    doms.innerHTML = `
+        <h2>DOMS Check-In</h2>
+        <p>Rate your soreness from the last session</p>
+        <input type="range" min="0" max="5" id="domsRating">
+        <button onclick="submitDOMS()">Submit</button>
+    `;
+}
+
+function submitDOMS() {
+    alert("DOMS rating saved");
+}
+</script>
+
+</body>
+</html>
